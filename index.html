@@ -1,5 +1,1255 @@
 <!DOCTYPE html>
-<html>
-<head><title>Masudur Rahman</title></head>
-<body><h1>Hello, I'm Masudur Rahman</h1></body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masudur Rahman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root {
+      --bg-page: #f4f6f9;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-accent-soft: #eff6ff;
+
+      --border-color: #e2e8f0;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent: #2c3e99;
+      --accent-hover: #1e2d75;
+
+      --ff-poppins: 'Poppins', sans-serif;
+      --shadow-1: 0 4px 20px rgba(15, 23, 42, 0.05);
+      --shadow-2: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --transition-1: 0.25s ease;
+      --transition-2: 0.4s ease-in-out;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { font-family: var(--ff-poppins); }
+    body {
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { text-decoration: none; color: inherit; }
+    li { list-style: none; }
+    button { font: inherit; background: none; border: none; text-align: left; cursor: pointer; }
+    img, ion-icon, svg { display: block; }
+
+    /* =========================================
+       HEADER (Reference 2 Style — #2c3e99)
+       ========================================= */
+    .site-header {
+      width: 100%;
+      background: #2c3e99;
+      border-bottom: 1px solid #1e2d75;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .site-brand {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.25px;
+    }
+
+    .top-nav-list {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .top-nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 4px 0;
+      position: relative;
+      transition: color var(--transition-1);
+    }
+
+    .top-nav-link:hover { color: #ffffff; }
+
+    .top-nav-link.active {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .top-nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+
+    .header-socials {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-social-link {
+      color: rgba(255, 255, 255, 0.8);
+      transition: color var(--transition-1), transform var(--transition-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-social-link:hover {
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .header-social-link svg {
+      width: 19px;
+      height: 19px;
+      fill: currentColor;
+    }
+
+    /* =========================================
+       MIDDLE SECTION (Reference 1 Split-Screen)
+       ========================================= */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 30px auto 50px;
+      padding: 0 16px;
+    }
+
+    .sidebar, article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow-1);
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: var(--border-color);
+      margin: 18px 0;
+    }
+
+    .icon-box {
+      background: var(--bg-accent-soft);
+      border: 1px solid #dbeafe;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Page Switching */
+    article { display: none; }
+    article.active {
+      display: block;
+      animation: fade 0.35s ease backwards;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .h2, .h3, .h4 { color: var(--text-primary); }
+    .h2 { font-size: 24px; font-weight: 600; }
+    .h3 { font-size: 18px; font-weight: 600; }
+    .h4 { font-size: 15px; font-weight: 500; }
+
+    .article-title {
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 26px;
+    }
+
+    .article-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      margin-bottom: 20px;
+      max-height: 118px;
+      overflow: hidden;
+      transition: var(--transition-2);
+    }
+
+    .sidebar.active { max-height: 500px; }
+
+    .sidebar-info {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar-box {
+      background: var(--bg-accent-soft);
+      border-radius: 20px;
+      width: 78px;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #dbeafe;
+      flex-shrink: 0;
+    }
+
+    .avatar-initials {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .info-content .name {
+      color: var(--text-primary);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.25px;
+      margin-bottom: 6px;
+    }
+
+    .info-content .title {
+      color: var(--accent);
+      background: var(--bg-accent-soft);
+      font-size: 11px;
+      font-weight: 500;
+      width: max-content;
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    .info_more-btn {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      border-radius: 0 16px;
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--bg-subtle);
+      border-left: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 14px;
+      transition: var(--transition-1);
+    }
+
+    .info_more-btn:hover { background: var(--bg-accent-soft); }
+    .info_more-btn span { display: none; }
+
+    .sidebar-info_more {
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-2);
+    }
+
+    .sidebar.active .sidebar-info_more {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .contacts-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-info { max-width: calc(100% - 52px); }
+
+    .contact-title {
+      color: var(--text-muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .contact-info :is(.contact-link, address) {
+      color: var(--text-primary);
+      font-size: 13px;
+      font-style: normal;
+      word-break: break-word;
+    }
+
+    /* =========================================
+       HOME PAGE
+       ========================================= */
+    .body-text {
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .body-text p { margin-bottom: 14px; }
+    .body-text p:last-child { margin-bottom: 0; }
+
+    .section-title {
+      margin-bottom: 14px;
+    }
+
+    .research-focus-section { margin-bottom: 36px; }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .service-item {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color var(--transition-1), box-shadow var(--transition-1);
+    }
+
+    .service-item:hover {
+      border-color: #bfdbfe;
+      box-shadow: var(--shadow-1);
+    }
+
+    .service-icon-box {
+      color: var(--accent);
+      font-size: 26px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .service-item-title { margin-bottom: 6px; }
+
+    .service-item-text {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* Affiliations Logo Grid */
+    .affiliations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .affiliation-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      height: 100px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition-1), box-shadow var(--transition-1);
+    }
+
+    .affiliation-card.dark-bg {
+      background: #000000;
+    }
+
+    .affiliation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-2);
+    }
+
+    .affiliation-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* =========================================
+       RESEARCH PAGE
+       ========================================= */
+    .research-section {
+      margin-bottom: 48px;
+    }
+
+    .research-section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .research-list {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .research-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .research-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .research-title {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    a.research-title:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .status-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      padding: 2px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .research-authors {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .research-authors strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .research-venue {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .metric-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .metric-badge[title] { cursor: help; }
+
+    .badge-q1 {
+      background: #ecfdf5;
+      color: #047857;
+      border-color: #a7f3d0;
+    }
+
+    .badge-q2 {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+
+    .badge-q3 {
+      background: #fffbeb;
+      color: #b45309;
+      border-color: #fde68a;
+    }
+
+    .badge-q4 {
+      background: #f1f5f9;
+      color: #475569;
+      border-color: #cbd5e1;
+    }
+
+    .research-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .research-links a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .research-links a:hover { text-decoration: underline; }
+
+    .research-footnote {
+      margin-top: 48px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       RESUME PAGE (Reference 2 Academic Style)
+       ========================================= */
+    .resume-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .resume-top-bar .article-title {
+      margin-bottom: 0;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background var(--transition-1);
+    }
+
+    .btn-download:hover {
+      background: var(--accent-hover);
+    }
+
+    .cv-section {
+      margin-bottom: 40px;
+    }
+
+    .cv-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .cv-date {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .cv-role {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cv-org {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+    }
+
+    .cv-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 3px;
+    }
+
+    /* Placeholder (Credentials Page) */
+    .placeholder-box {
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-color);
+      border-radius: 14px;
+      padding: 48px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14.5px;
+    }
+
+    /* =========================================
+       FOOTER (Reference 2 Style)
+       ========================================= */
+    .site-footer {
+      width: 100%;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-card);
+      padding: 22px 24px;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-right a {
+      color: var(--accent);
+      font-weight: 500;
+      transition: color var(--transition-1);
+    }
+
+    .footer-right a:hover { color: var(--accent-hover); }
+
+    /* =========================================
+       RESPONSIVE BREAKPOINTS
+       ========================================= */
+    @media (min-width: 580px) {
+      .sidebar, article { padding: 30px; }
+      .sidebar { max-height: 170px; }
+      .avatar-box { width: 100px; height: 100px; border-radius: 24px; }
+      .info-content .name { font-size: 22px; }
+      .info_more-btn { top: -30px; right: -30px; padding: 10px 16px; }
+      .info_more-btn span { display: block; }
+      .info_more-btn ion-icon { display: none; }
+    }
+
+    @media (min-width: 768px) {
+      .contacts-list { grid-template-columns: 1fr 1fr; }
+      .service-list { grid-template-columns: 1fr 1fr; }
+      .affiliations-grid { grid-template-columns: repeat(4, 1fr); }
+      .cv-entry {
+        grid-template-columns: 145px 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      main {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 86px;
+        width: 28%;
+        max-height: max-content;
+        margin-bottom: 0;
+        padding-top: 40px;
+      }
+
+      .main-content {
+        width: 72%;
+      }
+
+      .sidebar-info {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .avatar-box {
+        width: 140px;
+        height: 140px;
+        border-radius: 30px;
+      }
+
+      .info-content .name {
+        font-size: 22px;
+        margin-top: 8px;
+      }
+
+      .info-content .title {
+        margin: 0 auto;
+      }
+
+      .info_more-btn { display: none; }
+      .sidebar-info_more { opacity: 1; visibility: visible; }
+      .contacts-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER (Reference 2 Style — #2c3e99) -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-left">
+        <a href="#" class="site-brand" data-nav-link="home">Masudur Rahman</a>
+        <nav aria-label="Primary Navigation">
+          <ul class="top-nav-list">
+            <li><button class="top-nav-link active" data-nav-link="home">Home</button></li>
+            <li><button class="top-nav-link" data-nav-link="research">Research</button></li>
+            <li><button class="top-nav-link" data-nav-link="resume">Resume</button></li>
+            <li><button class="top-nav-link" data-nav-link="credentials">Credentials</button></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-socials">
+        <!-- LinkedIn -->
+        <a href="#" class="header-social-link" title="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+
+        <!-- ORCID -->
+        <a href="https://orcid.org/0009-0006-0873-0720" class="header-social-link" title="ORCID" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+        </a>
+
+        <!-- Google Scholar -->
+        <a href="#" class="header-social-link" title="Google Scholar" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+        </a>
+
+        <!-- GitHub -->
+        <a href="#" class="header-social-link" title="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MIDDLE SECTION (Reference 1 Split-Screen) -->
+  <main>
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <!-- Replace with: <img src="photo.jpg" alt="Masudur Rahman" style="width:100%; height:100%; object-fit:cover;"> -->
+          <div class="avatar-initials">MR</div>
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name">Masudur Rahman</h1>
+          <p class="title">Economics & Finance Researcher</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+48000000000" class="contact-link">+48 000 000 000</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Kraków, Poland</address>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- =========================================
+           PAGE 1: HOME
+           ========================================= -->
+      <article class="active" data-page="home">
+
+        <!-- Intro Text -->
+        <section class="body-text">
+          <p>
+            I am an economics and finance researcher based in Kraków, Poland. My research sits at the intersection of empirical corporate finance, sustainable finance regulations (EU Taxonomy and CSRD), and Central and Eastern European macroeconomic dynamics.
+          </p>
+          <p>
+            I specialize in panel econometrics, quasi-experimental causal inference, and quantitative financial modeling using R, Python, and LSEG Workspace.
+          </p>
+        </section>
+
+        <!-- Education (Plain Text like Reference 2) -->
+        <section class="body-text">
+          <h3 class="h3 section-title">Education</h3>
+          <p>
+            I completed my Master's degree in Business and Finance Management at Jagiellonian University in Kraków, Poland in July 2025 (GPA: 4.91/5.00), where I defended my thesis on the impact of corporate social responsibility on the financial performance of commercial banks in Poland under the supervision of Dr. Magdalena Kossowska-Lai. Prior to this, I earned a Master of Business Administration (MBA) in Finance from Green University of Bangladesh in 2020 and a Bachelor of Business Administration (BBA) in Accounting and Finance from American International University–Bangladesh (AIUB) in 2017.
+          </p>
+        </section>
+
+        <!-- In a Nutshell: Research Focus -->
+        <section class="research-focus-section">
+          <h3 class="h3 section-title">In a Nutshell: Research Focus</h3>
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="leaf-outline"></ion-icon>
+              </div>
+              <div>
+                <h4 class="h4 service-item-title">ESG & Sustainable Banking</h4>
+                <p class="service-item-text">
+                  Studying how bank size, SASB financial materiality, and EU sustainability disclosures shape commercial bank performance.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="trending-up-outline"></ion-icon>
+              </div>
+              <div>
+                <h4 class="h4 service-item-title">CEE Exchange Rate Dynamics</h4>
+                <p class="service-item-text">
+                  Analyzing PLN, CZK, and HUF currency spillovers against USD, EUR, and global volatility (VIX) via Seemingly Unrelated Regressions.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="analytics-outline"></ion-icon>
+              </div>
+              <div>
+                <h4 class="h4 service-item-title">Applied Econometrics</h4>
+                <p class="service-item-text">
+                  Implementing fixed-effects panel models, PLS-SEM, and staggered Difference-in-Differences estimators in R and Python.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="grid-outline"></ion-icon>
+              </div>
+              <div>
+                <h4 class="h4 service-item-title">Financial Data Engineering</h4>
+                <p class="service-item-text">
+                  Automating empirical research workflows across LSEG Workspace, Python, R, and advanced Excel modeling.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Affiliations (4 Logos: JU, GUB, AIUB, AIBL) -->
+        <section class="affiliations-section">
+          <h3 class="h3 section-title">Affiliations</h3>
+          <div class="affiliations-grid">
+            <div class="affiliation-card" title="Jagiellonian University in Kraków">
+              <img src="UJ.svg" alt="Jagiellonian University in Kraków">
+            </div>
+            <div class="affiliation-card dark-bg" title="Green University of Bangladesh">
+              <img src="GUB.jpg" alt="Green University of Bangladesh">
+            </div>
+            <div class="affiliation-card" title="American International University-Bangladesh">
+              <img src="Aiub.svg" alt="American International University-Bangladesh">
+            </div>
+            <div class="affiliation-card" title="Al-Arafah Islami Bank PLC">
+              <img src="AIBL.png" alt="Al-Arafah Islami Bank PLC">
+            </div>
+          </div>
+        </section>
+
+      </article>
+
+      <!-- =========================================
+           PAGE 2: RESEARCH
+           ========================================= -->
+      <article data-page="research">
+        <header>
+          <h2 class="h2 article-title">Research</h2>
+        </header>
+
+        <!-- Section 1: Publications -->
+        <section class="research-section">
+          <h3 class="research-section-title">Publications</h3>
+          <div class="research-list">
+
+            <div class="research-item">
+              <div class="research-title-row">
+                <a href="#" class="research-title" target="_blank" rel="noopener">
+                  Is Bigger Greener? The Moderating Role of Bank Size in the ESG–Financial Performance Nexus in Polish Commercial Banks
+                </a>
+                <!-- For non-published items, uncomment below and remove .metrics-row:
+                <span class="status-pill">Under review</span>
+                -->
+              </div>
+
+              <p class="research-authors">
+                <strong>Masudur Rahman</strong>, Magdalena Kossowska-Lai
+              </p>
+
+              <p class="research-venue">
+                <em>Corporate Social Responsibility and Environmental Management</em>, 2026, Vol. [X], Issue [X], pp. [XX–XX]
+              </p>
+
+              <div class="metrics-row">
+                <span class="metric-badge">IF 4.2</span>
+                <span class="metric-badge">CiteScore 6.1</span>
+                <span class="metric-badge badge-q1">Q1</span>
+                <span class="metric-badge" title="Environmental Studies">Rank #12/210</span>
+              </div>
+
+              <div class="research-links">
+                <a href="#" target="_blank" rel="noopener">DOI</a>
+                <span>&middot;</span>
+                <a href="#" target="_blank" rel="noopener">PDF</a>
+                <span>&middot;</span>
+                <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Section 2: Theses -->
+        <section class="research-section">
+          <h3 class="research-section-title">Theses</h3>
+          <div class="research-list">
+
+            <!-- MSc Thesis (2025) -->
+            <div class="research-item">
+              <div class="research-title-row">
+                <span class="research-title">
+                  The Impact of Corporate Social Responsibility on the Financial Performance of Banks in Poland
+                </span>
+              </div>
+              <p class="research-venue">
+                MSc Thesis, Jagiellonian University in Kraków (2025)
+              </p>
+              <div class="research-links">
+                <a href="https://ruj.uj.edu.pl/entities/publication/31df13c3-b9e8-415f-ae36-39883dd76649" target="_blank" rel="noopener">University Repository</a>
+                <span>&middot;</span>
+                <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+              </div>
+            </div>
+
+            <!-- MBA Thesis (2020) -->
+            <div class="research-item">
+              <div class="research-title-row">
+                <span class="research-title">
+                  The Impact of Mobile Banking on Socioeconomic Development of Bangladesh
+                </span>
+              </div>
+              <p class="research-venue">
+                MBA Thesis, Green University of Bangladesh (2020) — Unpublished
+              </p>
+            </div>
+
+            <!-- BBA Internship Report (2017) -->
+            <div class="research-item">
+              <div class="research-title-row">
+                <span class="research-title">
+                  Foreign Exchange Activities of Al-Arafah Islami Bank Limited, Banani Branch
+                </span>
+              </div>
+              <p class="research-venue">
+                BBA Internship Report, American International University–Bangladesh (AIUB) (2017) — Unpublished
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Section 3: Conference Participation -->
+        <section class="research-section">
+          <h3 class="research-section-title">Conference Participation</h3>
+          <div class="research-list">
+
+            <div class="research-item">
+              <div class="research-title-row">
+                <span class="research-title">[Conference Name]</span>
+              </div>
+              <p class="research-venue">
+                Participant (non-author) &middot; [Year], [City, Country]
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Footnote -->
+        <footer class="research-footnote">
+          Metrics source and year: Impact Factor and quartile — Journal Citation Reports 2024; CiteScore — Scopus 2024. Metrics are updated annually.
+        </footer>
+      </article>
+
+      <!-- =========================================
+           PAGE 3: RESUME (Reference 2 Academic Style)
+           ========================================= -->
+      <article data-page="resume">
+        <div class="resume-top-bar">
+          <h2 class="h2 article-title">Resume</h2>
+          <!-- Place your CV PDF in the same folder as index.html and update href -->
+          <a href="Masudur_Rahman_CV.pdf" class="btn-download" target="_blank" rel="noopener">
+            <ion-icon name="document-text-outline"></ion-icon>
+            Download PDF
+          </a>
+        </div>
+
+        <!-- Education -->
+        <section class="cv-section">
+          <h3 class="cv-section-title">Education</h3>
+          <div class="cv-list">
+            <div class="cv-entry">
+              <span class="cv-date">2023 – 2025</span>
+              <div>
+                <p class="cv-role">M.A. in Business and Finance Management</p>
+                <p class="cv-org">Jagiellonian University in Kraków, Poland</p>
+                <p class="cv-note">GPA: 4.91 / 5.00. Thesis: <em>The Impact of Corporate Social Responsibility on the Financial Performance of Banks in Poland</em>.</p>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <span class="cv-date">2019 – 2020</span>
+              <div>
+                <p class="cv-role">Master of Business Administration (MBA), Major in Finance</p>
+                <p class="cv-org">Green University of Bangladesh</p>
+                <p class="cv-note">Dissertation: <em>The Impact of Mobile Banking on Socioeconomic Development of Bangladesh</em>.</p>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <span class="cv-date">2014 – 2017</span>
+              <div>
+                <p class="cv-role">Bachelor of Business Administration (BBA), Major in Accounting & Finance</p>
+                <p class="cv-org">American International University–Bangladesh (AIUB)</p>
+                <p class="cv-note">GPA: 3.63 / 4.00. Internship Report: <em>Foreign Exchange Activities of Al-Arafah Islami Bank Limited, Banani Branch</em>.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="cv-section">
+          <h3 class="cv-section-title">Research & Professional Experience</h3>
+          <div class="cv-list">
+            <div class="cv-entry">
+              <span class="cv-date">2025 – Present</span>
+              <div>
+                <p class="cv-role">Academic Researcher (Co-Author)</p>
+                <p class="cv-org">Institute of Economics, Finance and Management, Jagiellonian University</p>
+                <p class="cv-note">Empirical research on ESG performance, bank size moderation, and European banking using LSEG Workspace and panel econometrics.</p>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <span class="cv-date">2024 – 2025</span>
+              <div>
+                <p class="cv-role">Customer Service & Operations</p>
+                <p class="cv-org">Kraków, Poland</p>
+                <p class="cv-note">Managed daily customer service operations, point-of-sale transactions, and team coordination.</p>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <span class="cv-date">3 Months</span>
+              <div>
+                <p class="cv-role">Banking Intern — Foreign Exchange Department</p>
+                <p class="cv-org">Al-Arafah Islami Bank PLC, Banani Branch</p>
+                <p class="cv-note">Assisted with foreign exchange operations, trade documentation, and client account verification.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="cv-section">
+          <h3 class="cv-section-title">Technical Skills & Tools</h3>
+          <div class="cv-list">
+            <div class="cv-entry">
+              <span class="cv-date">Econometrics</span>
+              <div>
+                <p class="cv-org">R (plm, systemfit, seminr), Python (pandas, statsmodels, yfinance), Panel Data, DiD, PLS-SEM, SUR</p>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <span class="cv-date">Finance & Data</span>
+              <div>
+                <p class="cv-org">LSEG Workspace (Refinitiv), Microsoft Excel (Macros, VLOOKUP, Data Analysis), LaTeX</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <!-- =========================================
+           PAGE 4: CREDENTIALS (Placeholder)
+           ========================================= -->
+      <article data-page="credentials">
+        <header>
+          <h2 class="h2 article-title">Credentials</h2>
+        </header>
+        <div class="placeholder-box">
+          Information will be updated soon.
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER (Reference 2 Style) -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        &copy; 2026 Masudur Rahman. All rights reserved.
+      </div>
+      <div class="footer-right">
+        ORCID: <a href="https://orcid.org/0009-0006-0873-0720" target="_blank" rel="noopener">0009-0006-0873-0720</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    // Mobile sidebar contact drawer toggle
+    const sidebar = document.querySelector('[data-sidebar]');
+    const sidebarBtn = document.querySelector('[data-sidebar-btn]');
+    if (sidebarBtn) {
+      sidebarBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+      });
+    }
+
+    // Top header navigation switching
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const pages = document.querySelectorAll('[data-page]');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetPage = link.getAttribute('data-nav-link');
+
+        pages.forEach(page => {
+          page.classList.toggle('active', page.getAttribute('data-page') === targetPage);
+        });
+
+        document.querySelectorAll('.top-nav-link').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-nav-link') === targetPage);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
 </html>
